@@ -14,9 +14,12 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('ogolne.welcome');
 });
 Route::get('/kontakt', function () {
-    return view('kontakt');
+    return view('ogolne.kontakt');
 });
 
+Route::get('/onas', function () {
+    return view('ogolne.onas');
+});
