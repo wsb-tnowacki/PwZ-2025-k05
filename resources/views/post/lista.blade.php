@@ -10,22 +10,32 @@
             <th scope="col">Tytuł</th>
             <th scope="col">Autor</th>
             <th scope="col">Data powstania</th>
-            <th scope="col">Akcja</th>
+            @auth
+            <th scope="col">Akcja</th>                
+            @endauth
         </thead>
         <tbody>
+            @php($lp=1)
             @foreach ($posty as $post)
                 <tr>
-                    <td>{{$post->id}}</td>
+                    <td>{{$lp++}}</td>
                     <td><a href="{{route('post.show', $post->id)}}">{{$post->tytul}}</a></td>
                     <td>{{$post->autor}}</td>
                     <td>{{date('j F Y',strtotime($post->created_at))}}</td>
+                    @auth
                     <td>
                         <div class="d-flex">
                             <a href="{{route('post.edit', $post->id)}}">
                                 <button class="btn btn-success m-1" type="submit">E</button>
                             </a>
+                            <form action="{{route('post.destroy', $post->id)}}" method="post" onsubmit="return confirm('Czy na pewno usunąć ten post?')">
+                                @csrf
+                                @method('DELETE')
+                                <button class="btn btn-danger m-1" type="submit">X</button>
+                            </form>
                         </div> 
-                    </td>
+                    </td>    
+                    @endauth
                 </tr>
             @endforeach
         </tbody>
