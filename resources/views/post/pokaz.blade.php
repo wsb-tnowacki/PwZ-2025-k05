@@ -15,11 +15,18 @@
         <label for="email" class="form-label">Email</label>
         <input type="email" class="form-control" id="email" name="email" value="{{$post->email}}" disabled>
     </div>
-
+    <div>Data powstania: <b>{{date('j F Y H:m:s',strtotime($post->created_at))}}</b></div>
+    <div>Data edycji: <b>{{date('j F Y H:m:s',strtotime($post->updated_at))}}</b></div>
     <div class="for-group">
         <label for="tresc" class="form-label">Treść</label>
         <textarea class="form-control" name="tresc" id="tresc" cols="30" rows="4" disabled>{{$post->tresc}}</textarea>
-    </div>    
+    </div> 
+    <div class="d-flex">
+        <a href="{{route('post.edit', $post->id)}}">
+            <button class="btn btn-success m-1" type="submit">Edytuj post</button>
+        </a>
+    </div>   
+    
 @endisset
 <a href="{{route('post.index')}}"><button class="btn btn-primary m-1" type="submit">Powrót do listy</button></a>
     

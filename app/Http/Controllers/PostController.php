@@ -44,7 +44,7 @@ class PostController extends Controller
         $post->tresc = request('tresc');
         $post->save(); */
         $post->create($request->all());
-        return redirect()->route('post.index');
+        return redirect()->route('post.index')->with('message',"Poprawnie dodano post");
     }
 
     /**
@@ -62,15 +62,18 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        return "edit - post: $post";
+       //return "edit - post: $post";
+       return view('post.edytuj',compact('post'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Post $post)
+    public function update(PostStoreRequest $request, Post $post)
     {
-        return "update - post: $post";
+        //return "update - post: $post";
+        $post->update($request->all());
+        return redirect()->route('post.index')->with('message',"Poprawnie zmieniono post");
     }
 
     /**
