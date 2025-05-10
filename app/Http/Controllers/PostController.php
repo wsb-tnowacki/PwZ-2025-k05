@@ -13,7 +13,9 @@ class PostController extends Controller
      */
     public function index()
     {
-        return "index";
+        /* return "index"; */
+        $posty = Post::all();
+        return view('post.lista',compact('posty'));
     }
 
     /**
@@ -51,7 +53,8 @@ class PostController extends Controller
     public function show(Post $post)
     //public function show(string $post)
     {
-        return "show - post: $post";
+        //return "show - post: $post";
+        return view('post.pokaz',compact('post'));
     }
 
     /**

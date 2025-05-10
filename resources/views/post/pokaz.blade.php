@@ -1,3 +1,26 @@
-<div>
-    <!-- You must be the change you wish to see in the world. - Mahatma Gandhi -->
-</div>
+@extends('layout.layout')
+@section('tytul', 'Pojedynczy post')
+@section('podtytul', 'Szczegóły postu')
+@section('tresc')
+@isset($post)
+    <div class="for-group">
+        <label for="tytul" class="form-label">Tytuł</label>
+        <input type="text" class="form-control" id="tytul" name="tytul" value="{{$post->tytul}}" disabled>
+    </div>
+    <div class="for-group">
+        <label for="autor" class="form-label">Autor</label>
+        <input type="text" class="form-control" id="autor" name="autor" value="{{$post->autor}}" disabled>
+    </div>
+    <div class="for-group">
+        <label for="email" class="form-label">Email</label>
+        <input type="email" class="form-control" id="email" name="email" value="{{$post->email}}" disabled>
+    </div>
+
+    <div class="for-group">
+        <label for="tresc" class="form-label">Treść</label>
+        <textarea class="form-control" name="tresc" id="tresc" cols="30" rows="4" disabled>{{$post->tresc}}</textarea>
+    </div>    
+@endisset
+<a href="{{route('post.index')}}"><button class="btn btn-primary m-1" type="submit">Powrót do listy</button></a>
+    
+@endsection
