@@ -15,7 +15,8 @@
             @endauth
         </thead>
         <tbody>
-            @php($lp=1)
+           {{--  @php($lp=1) --}}
+            @php($lp=$posty->firstItem())
             @foreach ($posty as $post)
                 <tr>
                     <td>{{$lp++}}</td>
