@@ -40,6 +40,9 @@
             @endforeach
         </tbody>
     </table>
+    <div>
+        {{$posty->links()}}
+    </div>
     @else
         <div>Nie ma żadnych postów</div>
     @endif
